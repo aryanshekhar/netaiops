@@ -1,4 +1,4 @@
-# Alarm Normaliser — TMF642 Multi-Vendor AIOps Pipeline
+# NetAIOps — TMF642 Multi-Vendor AIOps Pipeline
 
 A production-grade alarm normalisation, ML anomaly detection, and knowledge-graph correlation platform for multi-domain telecom networks.
 
@@ -16,7 +16,7 @@ Raw alarms (6 vendor formats)
         │
         ▼
 ┌─────────────────────────────┐
-│   alarm_normalizer/         │  TMF642 normalisation pipeline
+│   netaiops/                 │  TMF642 normalisation pipeline
 │   ├── core/                 │  Canonical model, adapter base, pipeline orchestrator
 │   ├── adapters/             │  Cisco · Nokia × 2 · Ericsson · Huawei · SNMP · Prometheus · K8s
 │   ├── tests/  (22 tests)    │
@@ -56,8 +56,8 @@ Raw alarms (6 vendor formats)
 ### Alarm normalisation (no ML dependencies)
 
 ```bash
-git clone https://github.com/aryanshekhar/alarm-normalizer.git
-cd alarm-normalizer/alarm_normalizer
+git clone https://github.com/aryanshekhar/netaiops.git
+cd netaiops/netaiops
 
 # Run test suite (22 tests, pure Python)
 python tests/test_pipeline.py
@@ -247,8 +247,8 @@ RETURN path LIMIT 50
 ## Project Structure
 
 ```
-alarm-normalizer/
-├── alarm_normalizer/          # Normalisation pipeline (pure Python, no ML deps)
+netaiops/
+├── netaiops/                  # Normalisation pipeline (pure Python, no ML deps)
 │   ├── core/                  # model.py · base_adapter.py · pipeline.py
 │   ├── adapters/              # One file per vendor family
 │   ├── data/test_samples.py   # Real-world alarm samples for all vendors
@@ -275,7 +275,7 @@ alarm-normalizer/
 
 | Component            | Python | Dependencies                                    |
 |----------------------|--------|-------------------------------------------------|
-| alarm_normalizer     | ≥ 3.8  | None (stdlib only)                              |
+| netaiops             | ≥ 3.8  | None (stdlib only)                              |
 | simba_pipeline       | ≥ 3.9  | torch ≥ 2.0, numpy, pandas, scikit-learn        |
 | integrated_aiops     | ≥ 3.9  | All above + neo4j == 5.18.0                     |
 | Kafka integration    | —      | kafka-python ≥ 2.0.2 (optional)                |
@@ -293,6 +293,6 @@ pip install -r requirements.txt
 ## CI
 
 GitHub Actions runs on every push and pull request:
-- `alarm_normalizer/tests/test_pipeline.py` — 22 unit tests
-- `alarm_normalizer/demo/run_demo.py --scenario fiber` — fiber-cut cascade smoke test
+- `netaiops/tests/test_pipeline.py` — 22 unit tests
+- `netaiops/demo/run_demo.py --scenario fiber` — fiber-cut cascade smoke test
 - `simba_pipeline/tests/test_simba.py` — 59 unit tests (model, data, inference)

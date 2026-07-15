@@ -11,10 +11,10 @@ jobs:
       - name: Install ML dependencies
         run: pip install torch>=2.0.0 numpy>=1.24.0 pandas>=2.0.0 scikit-learn>=1.3.0
       - name: Run alarm normaliser tests
-        working-directory: alarm_normalizer
+        working-directory: netaiops
         run: python tests/test_pipeline.py
       - name: Run fiber cascade demo
-        working-directory: alarm_normalizer
+        working-directory: netaiops
         run: python demo/run_demo.py --scenario fiber
       - name: Run SIMBA tests
         working-directory: simba_pipeline
